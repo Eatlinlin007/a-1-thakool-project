@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Player : Character
 {
-    // Start is called before the first frame update
     void Start()
     {
         Init(100);
     }
-    public void OnHitWith()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TakeDamage();
+        Trap trap = collision.gameObject.GetComponent<Trap>();
+        if (trap != null)
+        {
+            OnHitWith(trap);
+        }
+    }
+    public void OnHitWith(Trap trap)
+    {
+        TakeDamage(trap.DamageHit);
     }
 }

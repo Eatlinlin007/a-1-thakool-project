@@ -16,5 +16,6 @@ public abstract class Trap : Character
             damageHit = value;
         }
     }
-    public abstract void Behaviour();
+    public abstract void Type();
+
 }
