@@ -18,6 +18,7 @@ public abstract class Character : MonoBehaviour
         }
     }
     public Animator anim;
+    [SerializeField] HealthBar healthBar;
 
 
     public bool IsDead()
@@ -33,15 +34,15 @@ public abstract class Character : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log($"{this.name} took {damage} damage; Remaining Health: {this.Health}");
-        // healthBar.UpdateHealthBar(health);
+       // Debug.Log($"{this.name} took {damage} damage; Remaining Health: {this.Health}");
+         healthBar.UpdateHealthBar(health);
 
          IsDead();
     }
     public virtual void Init(int newHealth)
     {
         Health = newHealth;
-        // healthBar.SetMaxHealth(newHealth);
+         healthBar.SetMaxHealth(newHealth);
 
         anim = GetComponent<Animator>();
 

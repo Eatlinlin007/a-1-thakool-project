@@ -17,7 +17,7 @@ public class SpikeHead : Trap
         DamageHit = 100;
         speed = 0.75f;
         range = 10;
-        checkDelay = 1;
+        checkDelay = 0;
 
     }
     private void Update()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : Trap, IShootable
+public class Cannon : MonoBehaviour,IShootable
 {
     float attackRange;
     public float AttackRange { get { return attackRange; } set { attackRange = value; } }
@@ -21,15 +21,15 @@ public class Cannon : Trap, IShootable
         bulletWaitTime = 0.0f;
         bulletTimer = 9.5f;
         AttackRange = 100;
-        player = GameObject.FindObjectOfType<Player>();
     }
 
     private void FixedUpdate()
     {
         bulletWaitTime += Time.fixedDeltaTime;
-        Type();
+        Range();
     }
-    public override void Type()
+
+    public void Range()
     {
         Vector2 distance = player.transform.position - transform.position;
 
@@ -38,6 +38,7 @@ public class Cannon : Trap, IShootable
             Shoot();
         }
     }
+
     public void Shoot()
     {
         if (bulletWaitTime >= bulletTimer)
