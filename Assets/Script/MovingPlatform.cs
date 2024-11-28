@@ -7,7 +7,17 @@ public class MovingPlatform : MonoBehaviour, IMovingPlatform
     public float Speed { get; set; }
     public int StartingPoint { get; set; }
     [SerializeField] private Transform[] points;
-    public Transform[] Points { get { return points; } set { points = value; } }
+    public Transform[] Points 
+    {
+        get
+        { 
+            return points; 
+        } 
+        set 
+        { 
+            points = value; 
+        } 
+    }
 
     private int i;
 

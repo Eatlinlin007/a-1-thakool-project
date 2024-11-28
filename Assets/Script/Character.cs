@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class Character : MonoBehaviour
 {
+    [SerializeField] HealthBar healthBar;
     [SerializeField] private int health;
     public int Health
     {
@@ -17,9 +18,6 @@ public abstract class Character : MonoBehaviour
             health = value;
         }
     }
-    public Animator anim;
-    [SerializeField] HealthBar healthBar;
-
 
     public bool IsDead()
     {
@@ -33,8 +31,7 @@ public abstract class Character : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
-       // Debug.Log($"{this.name} took {damage} damage; Remaining Health: {this.Health}");
+         health -= damage;
          healthBar.UpdateHealthBar(health);
 
          IsDead();
@@ -42,11 +39,7 @@ public abstract class Character : MonoBehaviour
     public virtual void Init(int newHealth)
     {
         Health = newHealth;
-         healthBar.SetMaxHealth(newHealth);
-
-        anim = GetComponent<Animator>();
-
-
+        healthBar.SetMaxHealth(newHealth);
     }
     private void Die()
     {
