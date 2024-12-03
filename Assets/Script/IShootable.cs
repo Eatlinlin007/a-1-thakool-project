@@ -11,4 +11,5 @@ public interface IShootable
     float bulletTimer { get; set; }
 
     void Shoot();
+    void Range();
 }
